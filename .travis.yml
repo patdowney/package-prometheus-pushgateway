@@ -16,7 +16,6 @@ install: bundle install
 script:
 - make
 deploy:
-  matrix:
   - provider: bintray
     file: ".bintray/deb.json"
     user: patdowney
