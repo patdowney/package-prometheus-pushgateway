@@ -1,0 +1,47 @@
+{
+  "package": {
+    "name": "%%PACKAGE_NAME%%",
+    "repo": "deb",
+    "subject": "patdowney",
+    "desc": "Hashicorp %%PACKAGE_NAME%% (unofficial package)",
+    "website_url": "https://consul.io",
+    "issue_tracker_url": "https://github.com/hashicorp/%%PACKAGE_NAME%%consul/issues",
+    "vcs_url": "https://github.com/hashicorp/%%PACKAGE_NAME%%.git",
+    "licenses": ["MPL-2.0"],
+    "github_repo": "hashicorp/%%PACKAGE_NAME%%",
+    "public_download_numbers": false,
+    "public_stats": false
+  },
+  "version": {
+    "name": "%%PACKAGE_VERSION%%"
+  },
+  "files":
+  [
+    {
+      "includePattern": "./(%%PACKAGE_NAME%%_%%PACKAGE_VERSION%%.*_amd64.deb)",
+      "uploadPattern": "$1",
+      "matrixParams": {
+        "deb_distribution": "precise,trusty,vivid,xenial,jessie",
+        "deb_component": "main",
+        "deb_architecture": "amd64"}
+    },
+    {
+      "includePattern": "./(%%PACKAGE_NAME%%_%%PACKAGE_VERSION%%.*_i386.deb)",
+      "uploadPattern": "$1",
+      "matrixParams": {
+        "deb_distribution": "precise,trusty,vivid,xenial,jessie",
+        "deb_component": "main",
+        "deb_architecture": "i386"}
+    },
+    {
+      "includePattern": "./(%%PACKAGE_NAME%%_%%PACKAGE_VERSION%%.*_armhf.deb)",
+      "uploadPattern": "$1",
+      "matrixParams": {
+        "deb_distribution": "precise,trusty,vivid,xenial,jessie",
+        "deb_component": "main",
+        "deb_architecture": "armhf"}
+    }
+
+  ],
+  "publish": true
+}

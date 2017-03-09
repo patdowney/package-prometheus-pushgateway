@@ -1,0 +1,33 @@
+sudo: required
+dist: trusty
+addons:
+  apt:
+    packages:
+    - wget
+    - curl
+    - rpm
+language: ruby
+rvm:
+- 2.1.5
+env:
+- PACKAGE_TARGET=deb
+- PACKAGE_TARGET=rpm
+install: bundle install
+script:
+- make
+deploy:
+  matrix:
+  - provider: bintray
+    file: ".bintray/deb.json"
+    user: patdowney
+    key:
+      secure: H8G0GSjoTCDW8Y7VOtCXkj/eKuev7PGdDqkoAe/zLiHqwFaH5tdnHzDbOjUV0OGbfPvc35BjnoZwKvi0pEnwZb4r3vkMsnlRAh7tTONOUWu7oCMfK8GllCgVzMHFofLL58AexID/rqY4cn6vRHzX8Vb7afO4IRj15pp5iTaeaq6o8mYvAWWFK9TlRvSN5H2hlAoOmwFhkH/M4wDqR7xtDe4TTaFJphGRvNfFfzqPPnsFp/UbvCwm85vHFiCR5RGn+0mkxu/LYCnNAOFksRpS5fJf98Qi6nXafaVEEgl674OfIMYHyLnrR0LwCnWTnU7pqJnXzI5lUivncrpjoNYKjYiMUm/pMw5E+CRa5+MtPlDPiGsY/eFOnKcZc3j49XJffMHIM+mFoQVZ4ZAVrEx6JZS1oF/HLDgxmpmKo2KMdUTqrzFqMdVZCNnEo0E26fRfxUsNnB1Fo01tLHDNT2t3TMjcjcl0lectWxLBeQVtQ/narbuzD89Ii7VeWsN55va/f/05FrMn465qq7I9BLR4wLYR7DvksG7BMU8lmEQLo6Tl7b2+ge8L0KwwCSh3FApsiIgzSUcrtUN9fIxISpP5xfYL8WePZbbh8i5GZbUYVJ8YiACcgovpEQHnaI1ldbaQnuBxjv4R/MOAcFXCLbli9HyBOtQGrIPNaM4oUYgXhT0=
+    on:
+      condition: "$PACKAGE_TARGET = deb"
+  - provider: bintray
+    file: ".bintray/rpm.json"
+    user: patdowney
+    key:
+      secure: H8G0GSjoTCDW8Y7VOtCXkj/eKuev7PGdDqkoAe/zLiHqwFaH5tdnHzDbOjUV0OGbfPvc35BjnoZwKvi0pEnwZb4r3vkMsnlRAh7tTONOUWu7oCMfK8GllCgVzMHFofLL58AexID/rqY4cn6vRHzX8Vb7afO4IRj15pp5iTaeaq6o8mYvAWWFK9TlRvSN5H2hlAoOmwFhkH/M4wDqR7xtDe4TTaFJphGRvNfFfzqPPnsFp/UbvCwm85vHFiCR5RGn+0mkxu/LYCnNAOFksRpS5fJf98Qi6nXafaVEEgl674OfIMYHyLnrR0LwCnWTnU7pqJnXzI5lUivncrpjoNYKjYiMUm/pMw5E+CRa5+MtPlDPiGsY/eFOnKcZc3j49XJffMHIM+mFoQVZ4ZAVrEx6JZS1oF/HLDgxmpmKo2KMdUTqrzFqMdVZCNnEo0E26fRfxUsNnB1Fo01tLHDNT2t3TMjcjcl0lectWxLBeQVtQ/narbuzD89Ii7VeWsN55va/f/05FrMn465qq7I9BLR4wLYR7DvksG7BMU8lmEQLo6Tl7b2+ge8L0KwwCSh3FApsiIgzSUcrtUN9fIxISpP5xfYL8WePZbbh8i5GZbUYVJ8YiACcgovpEQHnaI1ldbaQnuBxjv4R/MOAcFXCLbli9HyBOtQGrIPNaM4oUYgXhT0=
+    on:
+      condition: "$PACKAGE_TARGET = rpm"
