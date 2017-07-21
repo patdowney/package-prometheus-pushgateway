@@ -1,0 +1,10 @@
+[Unit]
+Description=Prometheus Push Gateway
+Documentation=https://github.com/prometheus/pushgateway
+
+[Service]
+ExecStart=/usr/bin/pushgateway
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

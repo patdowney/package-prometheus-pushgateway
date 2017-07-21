@@ -1,6 +1,6 @@
 
-PACKAGE_PRODUCT=node_exporter
-PACKAGE_VERSION=0.13.0
+PACKAGE_PRODUCT=pushgateway
+PACKAGE_VERSION=0.3.1
 PACKAGE_ARCH="386 amd64 armv6"
 
 default: package bintray
